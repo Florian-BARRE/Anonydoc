@@ -18,7 +18,16 @@ from config_loader import CONFIG
 from entipy import TextEntityProcessor
 from extractor import ExtractorFactory
 
+# ====== Streamlit App Configuration ======
+st.set_page_config(
+    page_title="Anonydoc",
+    layout="wide",
+    initial_sidebar_state="expanded",
 
+)
+
+
+# ===== AnonyDocApp Class ======
 class AnonyDocApp:
     """
     AnonyDoc Streamlit Application for document anonymization, pseudonymization, and depseudonymization.
@@ -27,13 +36,6 @@ class AnonyDocApp:
         processor (TextEntityProcessor): The text entity processor used for transformations.
         mode (str): Current operation mode selected by the user.
     """
-
-    st.set_page_config(
-        page_title="Anonydoc",
-        layout="wide",
-        initial_sidebar_state="expanded",
-
-    )
 
     def __init__(self, text_entity_processor: TextEntityProcessor):
         """Initializes the app, configures the UI, and sets up session state."""
@@ -218,7 +220,8 @@ class AnonyDocApp:
             if ent.label not in (
                     list(self.build_mapping().keys()) if self.mode == 'Anonymisation' else self.build_mapping()):
                 continue
-            with st.expander(f"🔖 {ent.text} → {ent.replacement_text} ({ent.label}, confiance: {ent.detection_confidence:.2f})"):
+            with st.expander(
+                    f"🔖 {ent.text} → {ent.replacement_text} ({ent.label}, confiance: {ent.detection_confidence:.2f})"):
                 st.markdown(
                     f"Mots {ent.word_position.start}–{ent.word_position.end}, Caractères {ent.char_position.start}–{ent.char_position.end}")
                 st.markdown(f"... {sn.left} <mark>{ent.text}</mark> {sn.right} ...", unsafe_allow_html=True)
