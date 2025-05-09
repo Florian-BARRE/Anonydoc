@@ -218,7 +218,7 @@ class AnonyDocApp:
             if ent.label not in (
                     list(self.build_mapping().keys()) if self.mode == 'Anonymisation' else self.build_mapping()):
                 continue
-            with st.expander(f"🔖 {ent.text} → {ent.replacement_text} ({ent.label})"):
+            with st.expander(f"🔖 {ent.text} → {ent.replacement_text} ({ent.label}, confiance: {ent.detection_confidence:.2f})"):
                 st.markdown(
                     f"Mots {ent.word_position.start}–{ent.word_position.end}, Caractères {ent.char_position.start}–{ent.char_position.end}")
                 st.markdown(f"... {sn.left} <mark>{ent.text}</mark> {sn.right} ...", unsafe_allow_html=True)

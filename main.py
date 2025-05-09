@@ -13,7 +13,7 @@ from ui import AnonyDocApp
 
 
 @st.cache_resource
-def load_entity_processor() -> TextEntityProcessor:
+def chargement_des_ressources() -> TextEntityProcessor:
     """
     Loads and caches the TextEntityProcessor instance with predefined configuration values.
 
@@ -31,7 +31,7 @@ def load_entity_processor() -> TextEntityProcessor:
 if __name__ == "__main__":
     # Initialize the AnonyDocApp with the cached text entity processor
     app = AnonyDocApp(
-        text_entity_processor=load_entity_processor(),
+        text_entity_processor=chargement_des_ressources(),
     )
     # Run the AnonyDoc application
     app.run()
