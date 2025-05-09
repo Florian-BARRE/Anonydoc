@@ -45,7 +45,7 @@ Elle s’appuie sur le modèle NLP **GLiNER** pour la détection des entités no
 
 ```bash
 git clone https://github.com/Florian-BARRE/Anonydoc.git
-cd anonydoc
+cd Anonydoc
 ```
 
 2. Créer et activer un environnement virtuel :
